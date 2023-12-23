@@ -205,7 +205,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 alias df='df -h'
-alias ls='exa -lha'
+alias ls='exa'
 alias grep='grep --color=auto'
 
 # Major quality of life delete all the annoying .DS_Store objects

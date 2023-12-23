@@ -13,7 +13,8 @@ export PATH="$HOME"/.emacs.d/bin:$PATH
 export PYTHONPATH=$PYTHONPATH:/Users/mc/Include
 
 # Set the default editor
-export EDITOR=/usr/bin/vi
+# export EDITOR=/usr/bin/vi
+export EDITOR=/opt/homebrew/bin/nvim
 
 # CREM stores a bunch of molecular fragments which we can use for
 # molecular design. This points to the path containing fragments of
@@ -158,6 +159,27 @@ brew() {
     return "$brew_status"
 }
 
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.1.2
@@ -166,9 +188,74 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PATH="/opt/homebrew/opt/mongodb-community@5.0/bin:$PATH"
 
 # Source other stuff
-source ~/.bash_aliases
-source ~/.api_keys
+# Here we have aliases --------
+# Alias for vim
+alias vi='/opt/homebrew/bin/nvim'
 
+# General QOL aliases
+alias cp='cp -i' 
+alias rm='rm -i'
+alias mv='mv -i'
+
+alias df='df -h'
+alias ls='exa -lha'
+alias grep='grep --color=auto'
+
+# Major quality of life delete all the annoying .DS_Store objects
+# that MacOS tends to just leave lying around everywhere
+alias deleteDS_Store="find . -name .DS_Store -delete"
+
+# Connection to the Institutional Cluster at Brookhaven National Lab
+# alias ic='ssh -A -tt bnl_login ssh icsubmit01.sdcc.bnl.gov'
+alias ic='ssh bnl_compute'
+
+# Connection to my workstation at BNL CSI (requires intranet connection)
+alias ws='ssh bnl_workstation'
+
+# Reichman Rocks cluster at Columbia University
+alias rr='ssh -p 22222 -YC mcarbone@dyn.gw.reichman.zgib.net'
+
+# Reichman Rocks cluster via SonicWall VPN
+# alias rrvpn='ssh -tXYC mcarbone@192.168.100.70'
+alias rrvpn='ssh -tXY rrvpn_via_vickyp'
+
+# NERSC Cori
+alias cori='ssh mrc2215@cori.nersc.gov'
+
+# NERSC Cori with pre-generated 24h login key
+alias cori24='ssh -i ~/.ssh/nersc mrc2215@cori.nersc.gov'
+
+# Points to the columbia Habanero cluster
+alias habanero='ssh mrc2215@habanero.rcs.columbia.edu'
+
+# Activate CONDA environment with the name of the current directory
+alias a='conda activate "${PWD##*/}"' 
+
+# Deactivate CONDA encironment (return to base)
+alias da='conda deactivate'
+
+# Activate/deactivate pip virtual environment
+alias apip='source .env/bin/activate'
+
+# Mount/unmount the institutional cluster home directory
+alias mount_ic_home='sshfs bnl_compute:/sdcc/u/mcarbone ~/Mount/ic'
+alias unmount_ic_home='umount ~/Mount/ic'
+
+# DOOM emacs
+alias demacs='emacs-29.1 -nw'
+alias emax='
+export DISPLAY=:0.0
+export LIBGL_ALWAYS_INDIRECT=1
+emacs
+'
+
+# Task spooler
+# for some reason the alias is now ts
+alias tsp='ts'
+
+# Special hidden files for environment variable API keys
+# obviously we don't commit this to vcs
+source ~/.api_keys
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

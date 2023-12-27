@@ -35,6 +35,7 @@ return packer.startup(function(use)
 
     -- Preferred colorscheme
     use("bluz71/vim-nightfly-guicolors")
+    use("folke/tokyonight.nvim")
 
     -- tmux and split window nav
     use("christoomey/vim-tmux-navigator")
@@ -89,6 +90,22 @@ return packer.startup(function(use)
     }) -- enhanced lsp uis
     use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
     use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
+
+    -- formatting and liting
+    use("jose-elias-alvarez/null-ls.nvim")
+    use("jayp0521/mason-null-ls.nvim")
+
+    -- treesitter
+    use({
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+    })
+
+    -- auto-closing
+    use("windwp/nvim-autopairs")
+    use("windwp/nvim-ts-autotag")
 
     if packer_bootstrap then
         require("packer").sync()

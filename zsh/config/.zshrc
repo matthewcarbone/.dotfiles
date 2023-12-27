@@ -8,8 +8,14 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=/opt/homebrew/bin:$PATH
+
+# Specific hdspin convenience
 export PATH="$HOME"/GitHub/hdspin/build:$PATH
+
+# Emacs!
 export PATH="$HOME"/.emacs.d/bin:$PATH
+
+# My own python functions that I want to include in my path every time
 export PYTHONPATH=$PYTHONPATH:/Users/mc/Include
 
 # Set the default editor
@@ -200,13 +206,14 @@ export PATH="/opt/homebrew/opt/mongodb-community@5.0/bin:$PATH"
 alias vi='/opt/homebrew/bin/nvim'
 
 # General QOL aliases
-alias cp='cp -i' 
-alias rm='rm -i'
-alias mv='mv -i'
+# alias cp='cp -i' 
+# alias rm='rm -i'
+# alias mv='mv -i'
 
 alias df='df -h'
 alias ls='exa'
 alias grep='grep --color=auto'
+alias opens='open -a Sublime\ Text'
 
 # Major quality of life delete all the annoying .DS_Store objects
 # that MacOS tends to just leave lying around everywhere

@@ -33,6 +33,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-challenger-deep)
+;; (setq doom-theme 'doom-moonlight)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -81,12 +82,31 @@
 (setq user-full-name "Matthew R. Carbone"
       user-mail-address "x94carbone@gmail.com")
 
-(setq projectile-project-search-path '("~/projects/" "~/work/" "~/GitHub"))
+(setq projectile-project-search-path '("~/projects/" "~/work/" "~/GitHub" "~/GitHub/AIMM"))
 
-;; C++ experimentation
+;; C++ linting/error checking setup
 ;; (setq ccls-sem-highlight-method 'font-lock)
 (after! ccls
   (setq ccls-executable "/Users/mc/.dotfiles/scripts/ccls")
   (set-lsp-priority! 'ccls 0))
 
+;; A must: relative line numbers
 (setq display-line-numbers-type 'relative)
+
+;; Tree-sitter setup
+;; from here: https://discourse.doomemacs.org/t/tree-sitter/2547/5
+;; we'll see if it works
+(use-package! tree-sitter
+   :hook (prog-mode . turn-on-tree-sitter-mode)
+   :hook (tree-sitter-after-on . tree-sitter-hl-mode)
+   :config
+   (require 'tree-sitter-langs)
+   ;; This makes every node a link to a section of code
+   (setq tree-sitter-debug-jump-buttons t
+         ;; and this highlights the entire sub tree in your code
+         tree-sitter-debug-highlight-jump-region t))
+
+(global-tree-sitter-mode)
+
+(add-hook 'python-mode-hook #'tree-sitter-hl-mode)
+

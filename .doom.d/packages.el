@@ -52,3 +52,6 @@
 (package! cmake-ide)
 
 (package! company-tabnine)
+
+(package! tree-sitter)
+(package! tree-sitter-langs)

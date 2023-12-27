@@ -70,22 +70,48 @@ typescript.setup({
   },
 })
 
--- configure python server
+-- -- configure python server
 lspconfig["pyright"].setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
+    capabilities = capabilities,
+    on_attach = on_attach,
+    settings = {
+        pyright = {
+            disableLanguageServices = false,
+            disableOrganizeImports = false,
+        },
+        python = {
+            analysis = {
+                typeCheckingMode = "basic",
+                useLibraryCodeForTypes = false,
+                autoImportCompletions = true,
+            }
+        }
+    },
 })
+
 -- configure cmake server
 lspconfig["cmake"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
+
 -- configure c++ server
 lspconfig["clangd"].setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
+-- try to configure flake8???
+-- lspconfig["flake8"].setup({
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- })
+
+-- configure the shellcheck server
+lspconfig["bashls"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
 
 -- configure css server
 lspconfig["cssls"].setup({

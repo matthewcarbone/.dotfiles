@@ -27,7 +27,11 @@ treesitter.setup({
         "lua",
         "vim",
         "dockerfile",
-        "gitignore"
+        "gitignore",
+        "git_config",
+        "gitattributes",
+        "git_rebase",
+        "gitcommit"
     },
     auto_install = true,
 })

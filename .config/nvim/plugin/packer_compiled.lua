@@ -194,6 +194,11 @@ _G.packer_plugins = {
     path = "/Users/mc/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["swenv.nvim"] = {
+    loaded = true,
+    path = "/Users/mc/.local/share/nvim/site/pack/packer/start/swenv.nvim",
+    url = "https://github.com/AckslD/swenv.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
     path = "/Users/mc/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",

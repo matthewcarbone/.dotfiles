@@ -11,5 +11,7 @@ null_ls.setup({
         formatting.prettier,
         formatting.stylelua,
         diagnostics.eslint_d,
+        diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
+        formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
     },
 })

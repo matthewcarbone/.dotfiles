@@ -7,7 +7,7 @@
     lg = log --pretty=format:\"%h %C(yellow bold) %ar %Creset %s %C(cyan)%d\" --graph --all
 
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = /Users/mc/.gitignore
 
 [commit]

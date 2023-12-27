@@ -103,9 +103,15 @@ return packer.startup(function(use)
         end,
     })
 
+    -- flake8 support for python
+    -- use("nvie/vim-flake8")
+
     -- auto-closing
     use("windwp/nvim-autopairs")
     use("windwp/nvim-ts-autotag")
+
+    -- display conda environment in nvim
+    use("AckslD/swenv.nvim")
 
     if packer_bootstrap then
         require("packer").sync()

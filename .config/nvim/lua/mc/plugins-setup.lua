@@ -113,6 +113,81 @@ return packer.startup(function(use)
     -- display conda environment in nvim
     use("AckslD/swenv.nvim")
 
+    -- fun dashboard
+    use {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        config = function()
+            require('dashboard').setup({
+            theme = 'doom',
+            config = {
+              header = {
+"                                                    ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+" ███▄    █  ▓█████ ▒█████   ██▒   █▓  ██▓ ███▄ ▄███▓",
+" ██ ▀█   █  ▓█   ▀▒██▒  ██▒▓██░   █▒▒▓██▒▓██▒▀█▀ ██▒",
+"▓██  ▀█ ██▒ ▒███  ▒██░  ██▒ ▓██  █▒░▒▒██▒▓██    ▓██░",
+"▓██▒  ▐▌██▒ ▒▓█  ▄▒██   ██░  ▒██ █░░░░██░▒██    ▒██ ",
+"▒██░   ▓██░▒░▒████░ ████▓▒░   ▒▀█░  ░░██░▒██▒   ░██▒",
+"░ ▒░   ▒ ▒ ░░░ ▒░ ░ ▒░▒░▒░    ░ ▐░   ░▓  ░ ▒░   ░  ░",
+"░ ░░   ░ ▒░░ ░ ░    ░ ▒ ▒░    ░ ░░  ░ ▒ ░░  ░      ░",
+"   ░   ░ ░     ░  ░ ░ ░ ▒        ░  ░ ▒ ░░      ░   ",
+"         ░ ░   ░      ░ ░        ░    ░         ░   ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+"                                                    ",
+                    }, --your header
+              center = {
+                {
+                  icon = ' ',
+                  icon_hl = 'Title',
+                  desc = 'Find File           ',
+                  desc_hl = 'String',
+                  key = 'b',
+                  keymap = 'SPC f f',
+                  key_hl = 'Number',
+                  key_format = ' %s', -- remove default surrounding `[]`
+                  action = 'lua print(2)'
+                },
+                {
+                  icon = ' ',
+                  desc = 'Find Dotfiles',
+                  key = 'f',
+                  keymap = 'SPC f d',
+                  key_format = ' %s', -- remove default surrounding `[]`
+                  action = 'lua print(3)'
+                },
+              },
+              footer = {}  --your footer
+            }
+          })
+        end,
+        requires = {'nvim-tree/nvim-web-devicons'}
+    }
+
+    -- Automatic wrapping in certain situations
+    -- use :set wrap to enable
+    use({
+        "andrewferrier/wrapping.nvim",
+        -- config = function()
+        --     require("wrapping").setup()
+        -- end,
+    })
+
+    -- For a nice vertical barrier at 80 characters
+    -- used as a ruler
+    use({
+        "xiyaowong/virtcolumn.nvim",
+        commit = "4d385b4aa42aa3af6fa2cb8527462fa4badbd163",
+    })
+
     if packer_bootstrap then
         require("packer").sync()
     end

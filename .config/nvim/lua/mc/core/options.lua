@@ -5,6 +5,9 @@ local opt = vim.opt -- for conciseness
 opt.relativenumber = true
 opt.number = true
 
+-- minimum number of lines to display
+opt.scrolloff = 3
+
 -- tabbing and indentation
 opt.tabstop = 4  -- use 4 spaces for tabs
 opt.shiftwidth = 4
@@ -12,7 +15,7 @@ opt.expandtab = true
 opt.autoindent = true
 
 -- line wrapping
-opt.wrap = false 
+opt.wrap = false
 
 -- search settings
 opt.ignorecase = true
@@ -38,3 +41,14 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.iskeyword:append("-")
+
+-- for cursor hold events
+opt.updatetime = 500
+
+-- amount of time before timing out when attempting a command
+opt.timeoutlen = 500
+
+-- color ruler!
+opt.colorcolumn = "80"
+vim.g.virtcolumn_char = '▕' -- char to display the line
+vim.g.virtcolumn_priority = 10 -- priority of extmark

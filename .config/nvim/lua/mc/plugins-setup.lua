@@ -81,7 +81,7 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig") -- easily configure language servers 
     use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
     use({
-      "glepnir/lspsaga.nvim",
+      "nvimdev/lspsaga.nvim",
       branch = "main",
       requires = {
         { "nvim-tree/nvim-web-devicons" },
@@ -169,13 +169,16 @@ return packer.startup(function(use)
             }
           })
         end,
-        requires = {'nvim-tree/nvim-web-devicons'}
+        requires = {'nvim-tree/nvim-web-devicons'},
+        commit = "63df28409d940f9cac0a925df09d3dc369db9841",
     }
 
     -- Automatic wrapping in certain situations
     -- use :set wrap to enable
     use({
         "andrewferrier/wrapping.nvim",
+        version = "1.0.0",
+        -- commit = "696febba72939cf9082e0fd9cb9c603254cfa8a6",
         -- config = function()
         --     require("wrapping").setup()
         -- end,
@@ -187,6 +190,12 @@ return packer.startup(function(use)
         "xiyaowong/virtcolumn.nvim",
         commit = "4d385b4aa42aa3af6fa2cb8527462fa4badbd163",
     })
+
+    -- For nicer markdown
+    use("artempyanykh/marksman")
+
+    -- Ruff LSP
+
 
     if packer_bootstrap then
         require("packer").sync()

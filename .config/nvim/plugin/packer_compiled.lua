@@ -110,7 +110,7 @@ _G.packer_plugins = {
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
   ["dashboard-nvim"] = {
-    config = { "\27LJ\2\n�\15\0\0\6\0\f\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\3\0005\5\a\0>\5\1\0045\5\b\0>\5\2\4=\4\t\0034\4\0\0=\4\n\3=\3\v\2B\0\2\1K\0\1\0\vconfig\vfooter\vcenter\1\0\6\bkey\6f\vkeymap\fSPC f d\vaction\17lua print(3)\tdesc\18Find Dotfiles\15key_format\b %s\ticon\t \1\0\t\bkey\6b\tdesc\25Find File           \ticon\t \fdesc_hl\vString\ficon_hl\nTitle\vkeymap\fSPC f f\vaction\17lua print(2)\15key_format\b %s\vkey_hl\vNumber\vheader\1\0\0\1\22\0\0009                                                    9                                                    9                                                    9                                                    9                                                    9                                                    } ███▄    █  ▓█████ ▒█████   ██▒   █▓  ██▓ ███▄ ▄███▓�\1 ██ ▀█   █  ▓█   ▀▒██▒  ██▒▓██░   █▒▒▓██▒▓██▒▀█▀ ██▒�\1▓██  ▀█ ██▒ ▒███  ▒██░  ██▒ ▓██  █▒░▒▒██▒▓██    ▓██░�\1▓██▒  ▐▌██▒ ▒▓█  ▄▒██   ██░  ▒██ █░░░░██░▒██    ▒██ �\1▒██░   ▓██░▒░▒████░ ████▓▒░   ▒▀█░  ░░██░▒██▒   ░██▒o░ ▒░   ▒ ▒ ░░░ ▒░ ░ ▒░▒░▒░    ░ ▐░   ░▓  ░ ▒░   ░  ░e░ ░░   ░ ▒░░ ░ ░    ░ ▒ ▒░    ░ ░░  ░ ▒ ░░  ░      ░U   ░   ░ ░     ░  ░ ░ ░ ▒        ░  ░ ▒ ░░      ░   I         ░ ░   ░      ░ ░        ░    ░         ░   9                                                    9                                                    9                                                    9                                                    9                                                    9                                                    \1\0\1\ntheme\tdoom\nsetup\14dashboard\frequire\0" },
+    config = { "\27LJ\2\n�\15\0\0\6\0\f\0\0196\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\5\0005\4\4\0=\4\6\0034\4\3\0005\5\a\0>\5\1\0045\5\b\0>\5\2\4=\4\t\0034\4\0\0=\4\n\3=\3\v\2B\0\2\1K\0\1\0\vconfig\vfooter\vcenter\1\0\6\vkeymap\fSPC f d\bkey\6f\vaction\17lua print(3)\15key_format\b %s\tdesc\18Find Dotfiles\ticon\t \1\0\t\vkeymap\fSPC f f\15key_format\b %s\vaction\17lua print(2)\tdesc\25Find File           \vkey_hl\vNumber\bkey\6b\fdesc_hl\vString\ficon_hl\nTitle\ticon\t \vheader\1\0\0\1\22\0\0009                                                    9                                                    9                                                    9                                                    9                                                    9                                                    } ███▄    █  ▓█████ ▒█████   ██▒   █▓  ██▓ ███▄ ▄███▓�\1 ██ ▀█   █  ▓█   ▀▒██▒  ██▒▓██░   █▒▒▓██▒▓██▒▀█▀ ██▒�\1▓██  ▀█ ██▒ ▒███  ▒██░  ██▒ ▓██  █▒░▒▒██▒▓██    ▓██░�\1▓██▒  ▐▌██▒ ▒▓█  ▄▒██   ██░  ▒██ █░░░░██░▒██    ▒██ �\1▒██░   ▓██░▒░▒████░ ████▓▒░   ▒▀█░  ░░██░▒██▒   ░██▒o░ ▒░   ▒ ▒ ░░░ ▒░ ░ ▒░▒░▒░    ░ ▐░   ░▓  ░ ▒░   ░  ░e░ ░░   ░ ▒░░ ░ ░    ░ ▒ ▒░    ░ ░░  ░ ▒ ░░  ░      ░U   ░   ░ ░     ░  ░ ░ ░ ▒        ░  ░ ▒ ░░      ░   I         ░ ░   ░      ░ ░        ░    ░         ░   9                                                    9                                                    9                                                    9                                                    9                                                    9                                                    \1\0\1\ntheme\tdoom\nsetup\14dashboard\frequire\0" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -130,12 +130,17 @@ _G.packer_plugins = {
   ["lspsaga.nvim"] = {
     loaded = true,
     path = "/Users/mc/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
-    url = "https://github.com/glepnir/lspsaga.nvim"
+    url = "https://github.com/nvimdev/lspsaga.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/Users/mc/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
+  marksman = {
+    loaded = true,
+    path = "/Users/mc/.local/share/nvim/site/pack/packer/start/marksman",
+    url = "https://github.com/artempyanykh/marksman"
   },
   ["mason-lspconfig.nvim"] = {
     loaded = true,

@@ -6,7 +6,7 @@ opt.relativenumber = true
 opt.number = true
 
 -- minimum number of lines to display
-opt.scrolloff = 3
+opt.scrolloff = 8
 
 -- tabbing and indentation
 opt.tabstop = 4  -- use 4 spaces for tabs

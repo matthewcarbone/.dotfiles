@@ -1,30 +1,29 @@
 -- auto install packer if not installed
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-    vim.cmd([[packadd packer.nvim]])
-    return true
-  end
-  return false
+    local fn = vim.fn
+    local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+        vim.cmd([[packadd packer.nvim]])
+        return true
+    end
+    return false
 end
 local packer_bootstrap = ensure_packer() -- true if packer was just installed
-
 
 -- autocommand that reloads neovim and installs/updates/removes plugins
 -- when file is saved
 vim.cmd([[ 
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
-  augroup end
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins-setup.lua source <afile> | PackerSync
+augroup end
 ]])
 
 -- import packer safely
 local status, packer = pcall(require, "packer")
 if not status then
-  return
+    return
 end
 
 return packer.startup(function(use)
@@ -81,12 +80,12 @@ return packer.startup(function(use)
     use("neovim/nvim-lspconfig") -- easily configure language servers 
     use("hrsh7th/cmp-nvim-lsp") -- for autocompletion
     use({
-      "nvimdev/lspsaga.nvim",
-      branch = "main",
-      requires = {
-        { "nvim-tree/nvim-web-devicons" },
-        { "nvim-treesitter/nvim-treesitter" },
-      },
+        "nvimdev/lspsaga.nvim",
+        branch = "main",
+        requires = {
+            { "nvim-tree/nvim-web-devicons" },
+            { "nvim-treesitter/nvim-treesitter" },
+        },
     }) -- enhanced lsp uis
     use("jose-elias-alvarez/typescript.nvim") -- additional functionality for typescript server (e.g. rename file & update imports)
     use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
@@ -98,13 +97,11 @@ return packer.startup(function(use)
     -- treesitter
     use({
         "nvim-treesitter/nvim-treesitter",
+        tag = "v0.9.2",
         run = function()
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
     })
-
-    -- flake8 support for python
-    -- use("nvie/vim-flake8")
 
     -- auto-closing
     use("windwp/nvim-autopairs")
@@ -113,72 +110,12 @@ return packer.startup(function(use)
     -- display conda environment in nvim
     use("AckslD/swenv.nvim")
 
-    -- fun dashboard
-    use {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        config = function()
-            require('dashboard').setup({
-            theme = 'doom',
-            config = {
-              header = {
-"                                                    ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-" ███▄    █  ▓█████ ▒█████   ██▒   █▓  ██▓ ███▄ ▄███▓",
-" ██ ▀█   █  ▓█   ▀▒██▒  ██▒▓██░   █▒▒▓██▒▓██▒▀█▀ ██▒",
-"▓██  ▀█ ██▒ ▒███  ▒██░  ██▒ ▓██  █▒░▒▒██▒▓██    ▓██░",
-"▓██▒  ▐▌██▒ ▒▓█  ▄▒██   ██░  ▒██ █░░░░██░▒██    ▒██ ",
-"▒██░   ▓██░▒░▒████░ ████▓▒░   ▒▀█░  ░░██░▒██▒   ░██▒",
-"░ ▒░   ▒ ▒ ░░░ ▒░ ░ ▒░▒░▒░    ░ ▐░   ░▓  ░ ▒░   ░  ░",
-"░ ░░   ░ ▒░░ ░ ░    ░ ▒ ▒░    ░ ░░  ░ ▒ ░░  ░      ░",
-"   ░   ░ ░     ░  ░ ░ ░ ▒        ░  ░ ▒ ░░      ░   ",
-"         ░ ░   ░      ░ ░        ░    ░         ░   ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-"                                                    ",
-                    }, --your header
-              center = {
-                {
-                  icon = ' ',
-                  icon_hl = 'Title',
-                  desc = 'Find File           ',
-                  desc_hl = 'String',
-                  key = 'b',
-                  keymap = 'SPC f f',
-                  key_hl = 'Number',
-                  key_format = ' %s', -- remove default surrounding `[]`
-                  action = 'lua print(2)'
-                },
-                {
-                  icon = ' ',
-                  desc = 'Find Dotfiles',
-                  key = 'f',
-                  keymap = 'SPC f d',
-                  key_format = ' %s', -- remove default surrounding `[]`
-                  action = 'lua print(3)'
-                },
-              },
-              footer = {}  --your footer
-            }
-          })
-        end,
-        requires = {'nvim-tree/nvim-web-devicons'},
-        commit = "63df28409d940f9cac0a925df09d3dc369db9841",
-    }
-
     -- Automatic wrapping in certain situations
     -- use :set wrap to enable
     use({
         "andrewferrier/wrapping.nvim",
         version = "1.0.0",
-        -- commit = "696febba72939cf9082e0fd9cb9c603254cfa8a6",
+        commit = "696febba72939cf9082e0fd9cb9c603254cfa8a6",
         -- config = function()
         --     require("wrapping").setup()
         -- end,
@@ -194,8 +131,11 @@ return packer.startup(function(use)
     -- For nicer markdown
     use("artempyanykh/marksman")
 
-    -- Ruff LSP
+    -- inline git
+    use({"tpope/vim-fugitive", tag = "v3.7"})
 
+    -- useful Git gutter (displays changes inline without overwriting errors)
+    use({"airblade/vim-gitgutter", commit = "67ef116100b40f9ca128196504a2e0bc0a2753b0"})
 
     if packer_bootstrap then
         require("packer").sync()

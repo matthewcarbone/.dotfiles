@@ -52,3 +52,14 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if ne
 -- Custom delete line without making newline
 -- instead of cc<Esc>, we just use dD 
 keymap.set("n", "dD", "cc<Esc>")
+
+-- Adjust window width
+keymap.set("n", "<leader>we", ":NvimTreeResize ")
+-- vim.keymap.set("n", "<leader>we", function()
+--     local user_input = vim.fn.input("Enter input: ")
+--     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+--     vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { "_{" .. user_input .. "}" })
+-- end)
+-- Find and replace all instances of a text with something else
+-- this doesn't quite work
+-- keymap.set("n", "<leader>s", "[[:%s/<<C-r><C-w>>/<C-r><C-w>/gI<Left><Left><Left>]]")

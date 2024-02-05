@@ -38,6 +38,10 @@ local conditions = {
         local gitdir = vim.fn.finddir('.git', filepath .. ';')
         return gitdir and #gitdir > 0 and #gitdir < #filepath
     end,
+    is_python_file = function()
+        local filetype = vim.bo.filetype
+        return filetype == "python"
+    end,
 }
 
 -- Config
@@ -137,6 +141,12 @@ ins_left {
     -- filesize component
     'filesize',
     cond = conditions.buffer_not_empty,
+}
+
+ins_left {
+    'swenv',
+    cond = conditions.is_python_file,
+    icon = '🐍',
 }
 
 ins_left {

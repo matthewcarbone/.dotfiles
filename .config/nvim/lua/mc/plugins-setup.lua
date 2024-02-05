@@ -47,7 +47,7 @@ return packer.startup(function(use)
     use("vim-scripts/ReplaceWithRegister")
 
     -- file explorer
-    use ("nvim-tree/nvim-tree.lua")
+    use("nvim-tree/nvim-tree.lua")
 
     -- commenting with gc
     use("numToStr/Comment.nvim")
@@ -108,7 +108,24 @@ return packer.startup(function(use)
     use("windwp/nvim-ts-autotag")
 
     -- display conda environment in nvim
-    use("AckslD/swenv.nvim")
+    use({
+        "AckslD/swenv.nvim",
+        commit = "a4414ba79a1c4fa6a205049a9b1ada42c2987d2c"
+    })
+
+    -- Project management in nvim. Note that some automatic virtual environment
+    -- loading requires this package to work.
+    use({
+        "ahmedkhalf/project.nvim",
+        commit = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb",
+        config = function()
+            require("project_nvim").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    })
 
     -- Automatic wrapping in certain situations
     -- use :set wrap to enable

@@ -52,3 +52,6 @@ opt.timeoutlen = 500
 opt.colorcolumn = "80"
 vim.g.virtcolumn_char = '▕' -- char to display the line
 vim.g.virtcolumn_priority = 10 -- priority of extmark
+
+-- signify
+vim.g.signify_sign_overwrite = 0

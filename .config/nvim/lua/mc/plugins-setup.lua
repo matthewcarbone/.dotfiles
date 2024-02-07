@@ -59,8 +59,8 @@ return packer.startup(function(use)
     use("nvim-lualine/lualine.nvim")
 
     -- telescoping finding (fuzzy!)
-    use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x" })
+    use({"nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+    use({"nvim-telescope/telescope.nvim", branch = "0.1.x" })
 
     -- autocompletion
     use("hrsh7th/nvim-cmp")
@@ -75,6 +75,10 @@ return packer.startup(function(use)
     -- managing & installing lsp servers, linters & formatters
     use("williamboman/mason.nvim") -- in charge of managing lsp servers, linters & formatters
     use("williamboman/mason-lspconfig.nvim") -- bridges gap b/w mason & lspconfig
+
+    -- useful Git gutter (displays changes inline without overwriting errors)
+    -- use({"airblade/vim-gitgutter", commit = "67ef116100b40f9ca128196504a2e0bc0a2753b0"})
+    use({"lewis6991/gitsigns.nvim", tag = "v0.7"})
 
     -- configuring lsp servers
     use("neovim/nvim-lspconfig") -- easily configure language servers 
@@ -91,8 +95,56 @@ return packer.startup(function(use)
     use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
     -- formatting and liting
-    use("jose-elias-alvarez/null-ls.nvim")
-    use("jayp0521/mason-null-ls.nvim")
+    -- use("jose-elias-alvarez/null-ls.nvim")
+    use {
+        -- https://github.com/jose-elias-alvarez/null-ls.nvim/discussions/593
+        -- :NullLsInfo
+        -- format with :lua vim.lsp.buf.formatting()
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
+            -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save#sync-formatting
+            local null_ls = require("null-ls")
+            local formatting = null_ls.builtins.formatting
+            local diagnostics = null_ls.builtins.diagnostics
+            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+            null_ls.setup({
+                -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+                sources = {
+                    -- formatting.prettier,
+                    -- formatting.stylelua,
+                    -- diagnostics.eslint_d,
+                    diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
+                    formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
+                    null_ls.builtins.formatting.black.with({
+                        extra_args = { "--line-length=80" }
+                    }),
+                    null_ls.builtins.formatting.isort,
+                    null_ls.builtins.diagnostics.flake8,
+                    null_ls.builtins.diagnostics.shellcheck,
+                    null_ls.builtins.formatting.trim_newlines,
+                    null_ls.builtins.formatting.trim_whitespace,
+                },
+
+                -- you can reuse a shared lspconfig on_attach callback here
+                on_attach = function(client, bufnr)
+                    if client.supports_method("textDocument/formatting") then
+                        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                        vim.api.nvim_create_autocmd("BufWritePre", {
+                            group = augroup,
+                            buffer = bufnr,
+                            callback = function()
+                                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+                                vim.lsp.buf.formatting_sync()
+                            end,
+                        })
+                    end
+                end,
+
+            })
+        end,
+        requires = { 'nvim-lua/plenary.nvim' },
+    }
+    use({"jay-babu/mason-null-ls.nvim", tag = "v2.4.0"})
 
     -- treesitter
     use({
@@ -149,10 +201,18 @@ return packer.startup(function(use)
     use("artempyanykh/marksman")
 
     -- inline git
-    use({"tpope/vim-fugitive", tag = "v3.7"})
+    -- use({"tpope/vim-fugitive", tag = "v3.7"})
 
-    -- useful Git gutter (displays changes inline without overwriting errors)
-    use({"airblade/vim-gitgutter", commit = "67ef116100b40f9ca128196504a2e0bc0a2753b0"})
+    -- DOGE
+    -- For documentation
+    use({
+        'kkoomen/vim-doge',
+        tag = "v4.6.2",
+        run = ':call doge#install()',
+    })
+
+    -- Undo tree 
+    use({"mbbill/undotree", tag = "rel_6.1"})
 
     if packer_bootstrap then
         require("packer").sync()

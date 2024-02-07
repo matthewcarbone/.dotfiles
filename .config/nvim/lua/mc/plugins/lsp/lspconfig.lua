@@ -31,7 +31,7 @@ local set_qflist = function(buf_num, severity)
     vim.fn.setqflist({}, ' ', { title = 'Diagnostics', items = qf_items })
 
     -- open quickfix by default
-    vim.cmd[[copen]]
+    vim.cmd [[copen]]
 end
 
 local on_attach = function(client, bufnr)
@@ -99,18 +99,18 @@ local on_attach = function(client, bufnr)
       ]])
 
         local gid = api.nvim_create_augroup("lsp_document_highlight", { clear = true })
-        api.nvim_create_autocmd("CursorHold" , {
+        api.nvim_create_autocmd("CursorHold", {
             group = gid,
             buffer = bufnr,
-            callback = function ()
+            callback = function()
                 lsp.buf.document_highlight()
             end
         })
 
-        api.nvim_create_autocmd("CursorMoved" , {
+        api.nvim_create_autocmd("CursorMoved", {
             group = gid,
             buffer = bufnr,
-            callback = function ()
+            callback = function()
                 lsp.buf.clear_references()
             end
         })
@@ -122,7 +122,7 @@ local on_attach = function(client, bufnr)
     end
 
     vim.api.nvim_create_autocmd("FileType", {
-        pattern = {"python"},
+        pattern = { "python" },
         callback = function()
             require('swenv.api').auto_venv()
         end
@@ -166,7 +166,7 @@ lspconfig["pyright"].setup({
         },
         python = {
             analysis = {
-                typeCheckingMode = "basic",
+                typeCheckingMode = "off",
                 useLibraryCodeForTypes = false,
                 autoImportCompletions = true,
             }
@@ -256,7 +256,7 @@ vim.diagnostic.config({
 --   { noremap = true, silent = true }
 -- )
 
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 -- vim.keymap.set('n', '<leader>d', ':lua vim.diagnostic.open_float()<CR>', {})
 
 -- Go to next diagnostic (if there are multiple on the same line, only shows
@@ -266,6 +266,3 @@ vim.api.nvim_set_keymap('n', '<leader>n', ':lua vim.diagnostic.goto_next()<CR>',
 -- Go to prev diagnostic (if there are multiple on the same line, only shows
 -- one at a time in the floating window)
 vim.api.nvim_set_keymap('n', '<leader>p', ':lua vim.diagnostic.goto_prev()<CR>', opts)
-
-
-

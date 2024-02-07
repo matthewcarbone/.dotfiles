@@ -53,8 +53,21 @@ keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if ne
 -- instead of cc<Esc>, we just use dD 
 keymap.set("n", "dD", "cc<Esc>")
 
+-- Undotree remap
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+
 -- Adjust window width
 keymap.set("n", "<leader>we", ":NvimTreeResize ")
+
+-- Autoformatting with lsp
+vim.keymap.set("n", "<leader>mf", function()
+    vim.lsp.buf.format()
+end)
+
+-- Telescope projects
+vim.keymap.set("n", "<leader>j", ":Telescope projects<CR>")
+
+-- 
 -- vim.keymap.set("n", "<leader>we", function()
 --     local user_input = vim.fn.input("Enter input: ")
 --     local row, col = unpack(vim.api.nvim_win_get_cursor(0))

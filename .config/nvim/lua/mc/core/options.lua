@@ -55,3 +55,6 @@ vim.g.virtcolumn_priority = 10 -- priority of extmark
 
 -- signify
 vim.g.signify_sign_overwrite = 0
+
+-- DOGE
+vim.g.doge_doc_standard_python = "numpy"

@@ -6,7 +6,7 @@ local keymap = vim.keymap
 
 -- general
 -- mode, keybind, action
--- This is not something I actually want, since it replaces the j+k to 
+-- This is not something I actually want, since it replaces the j+k to
 -- escape, which I think would be confusing to me...
 -- keymap.set("i", "jk", "<ESC>")
 
@@ -16,8 +16,8 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- Window splits
 keymap.set("n", "<leader>sv", "<C-w>v")  -- splits vert
 keymap.set("n", "<leader>sh", "<C-w>s")  -- splits horizontal
-keymap.set("n", "<leader>se", "<C-w>=")  -- makes window splits of equal width 
-keymap.set("n", "<leader>sx", ":close<CR>") -- close current splits 
+keymap.set("n", "<leader>se", "<C-w>=")  -- makes window splits of equal width
+keymap.set("n", "<leader>sx", ":close<CR>") -- close current splits
 
 -- Tabs!
 keymap.set("n", "<leader>to", ":tabnew<CR>")
@@ -50,7 +50,7 @@ keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current c
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
 
 -- Custom delete line without making newline
--- instead of cc<Esc>, we just use dD 
+-- instead of cc<Esc>, we just use dD
 keymap.set("n", "dD", "cc<Esc>")
 
 -- Undotree remap
@@ -67,7 +67,7 @@ end)
 -- Telescope projects
 vim.keymap.set("n", "<leader>j", ":Telescope projects<CR>")
 
--- 
+--
 -- vim.keymap.set("n", "<leader>we", function()
 --     local user_input = vim.fn.input("Enter input: ")
 --     local row, col = unpack(vim.api.nvim_win_get_cursor(0))

@@ -95,56 +95,56 @@ return packer.startup(function(use)
     use("onsails/lspkind.nvim") -- vs-code like icons for autocompletion
 
     -- formatting and liting
-    -- use("jose-elias-alvarez/null-ls.nvim")
-    use {
-        -- https://github.com/jose-elias-alvarez/null-ls.nvim/discussions/593
-        -- :NullLsInfo
-        -- format with :lua vim.lsp.buf.formatting()
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-            -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save#sync-formatting
-            local null_ls = require("null-ls")
-            local formatting = null_ls.builtins.formatting
-            local diagnostics = null_ls.builtins.diagnostics
-            local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-            null_ls.setup({
-                -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-                sources = {
-                    -- formatting.prettier,
-                    -- formatting.stylelua,
-                    -- diagnostics.eslint_d,
-                    diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
-                    formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
-                    null_ls.builtins.formatting.black.with({
-                        extra_args = { "--line-length=80" }
-                    }),
-                    null_ls.builtins.formatting.isort,
-                    null_ls.builtins.diagnostics.flake8,
-                    null_ls.builtins.diagnostics.shellcheck,
-                    null_ls.builtins.formatting.trim_newlines,
-                    null_ls.builtins.formatting.trim_whitespace,
-                },
-
-                -- you can reuse a shared lspconfig on_attach callback here
-                on_attach = function(client, bufnr)
-                    if client.supports_method("textDocument/formatting") then
-                        vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-                        vim.api.nvim_create_autocmd("BufWritePre", {
-                            group = augroup,
-                            buffer = bufnr,
-                            callback = function()
-                                -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-                                vim.lsp.buf.formatting_sync()
-                            end,
-                        })
-                    end
-                end,
-
-            })
-        end,
-        requires = { 'nvim-lua/plenary.nvim' },
-    }
-    use({"jay-babu/mason-null-ls.nvim", tag = "v2.4.0"})
+    use("jose-elias-alvarez/null-ls.nvim")
+    -- use {
+    --     -- https://github.com/jose-elias-alvarez/null-ls.nvim/discussions/593
+    --     -- :NullLsInfo
+    --     -- format with :lua vim.lsp.buf.formatting()
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     config = function()
+    --         -- https://github.com/jose-elias-alvarez/null-ls.nvim/wiki/Formatting-on-save#sync-formatting
+    --         local null_ls = require("null-ls")
+    --         local formatting = null_ls.builtins.formatting
+    --         local diagnostics = null_ls.builtins.diagnostics
+    --         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+    --         null_ls.setup({
+    --             -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
+    --             sources = {
+    --                 -- formatting.prettier,
+    --                 -- formatting.stylelua,
+    --                 -- diagnostics.eslint_d,
+    --                 diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
+    --                 formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
+    --                 null_ls.builtins.formatting.black.with({
+    --                     extra_args = { "--line-length=80" }
+    --                 }),
+    --                 null_ls.builtins.formatting.isort,
+    --                 null_ls.builtins.diagnostics.flake8,
+    --                 null_ls.builtins.diagnostics.shellcheck,
+    --                 null_ls.builtins.formatting.trim_newlines,
+    --                 null_ls.builtins.formatting.trim_whitespace,
+    --             },
+    --
+    --             -- you can reuse a shared lspconfig on_attach callback here
+    --             on_attach = function(client, bufnr)
+    --                 if client.supports_method("textDocument/formatting") then
+    --                     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    --                     vim.api.nvim_create_autocmd("BufWritePre", {
+    --                         group = augroup,
+    --                         buffer = bufnr,
+    --                         callback = function()
+    --                             -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+    --                             vim.lsp.buf.formatting_sync()
+    --                         end,
+    --                     })
+    --                 end
+    --             end,
+    --
+    --         })
+    --     end,
+    --     requires = { 'nvim-lua/plenary.nvim' },
+    -- }
+    -- use({"jay-babu/mason-null-ls.nvim", tag = "v2.4.0"})
 
     -- treesitter
     use({

@@ -60,9 +60,9 @@ local on_attach = function(client, bufnr)
     map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
 
     -- Set some key bindings conditional on server capabilities
-    if client.server_capabilities.documentFormattingProvider then
-        map("n", "<leader>f", vim.lsp.buf.format, { desc = "format code" })
-    end
+    -- if client.server_capabilities.documentFormattingProvider then
+    --     map("n", "<leader>f", vim.lsp.buf.format, { desc = "format code" })
+    -- end
 
     api.nvim_create_autocmd("CursorHold", {
         buffer = bufnr,
@@ -184,6 +184,10 @@ lspconfig["cmake"].setup({
 lspconfig["clangd"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16"
+    }
 })
 
 -- try to configure flake8???

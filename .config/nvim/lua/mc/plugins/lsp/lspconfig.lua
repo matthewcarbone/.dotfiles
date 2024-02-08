@@ -121,12 +121,19 @@ local on_attach = function(client, bufnr)
         vim.notify(msg, vim.log.levels.DEBUG, { title = "Nvim-config" })
     end
 
-    vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "python" },
-        callback = function()
-            require('swenv.api').auto_venv()
-        end
-    })
+    -- vim.api.nvim_create_autocmd("FileType", {
+
+    -- local setup, swenv_api = pcall(require, "swenv.api")
+    -- if setup then
+    --     vim.api.nvim_create_autocmd("BufEnter", {
+    --         pattern = { "*.py" },
+    --         callback = function()
+    --             swenv_api.auto_venv()
+    --             vim.cmd.LspRestart()
+    --             print("Set conda environment")
+    --         end
+    --     })
+    -- end
 end
 
 

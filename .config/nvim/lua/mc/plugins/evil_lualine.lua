@@ -142,8 +142,22 @@ ins_left {
     cond = conditions.buffer_not_empty,
 }
 
+-- ins_left {
+--     'swenv',
+--     cond = conditions.is_python_file,
+--     icon = '🐍',
+-- }
+
 ins_left {
-    'swenv',
+    function()
+        local msg = os.getenv('CONDA_PREFIX')
+        if msg then
+            local name = msg:match( "([^/]+)$" )
+            return name
+        else
+            return 'unknown env'
+        end
+    end,
     cond = conditions.is_python_file,
     icon = '🐍',
 }

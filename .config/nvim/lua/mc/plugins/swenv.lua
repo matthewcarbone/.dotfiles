@@ -16,7 +16,9 @@ swenv.setup({
     -- Path passed to `get_venvs`.
     venvs_path = vim.fn.expand('/Users/mc/miniforge3/envs'),
     -- Something to do after setting an environment, for example call vim.cmd.LspRestart
-    post_set_venv = vim.cmd.LspRestart,
+    post_set_venv = function(_)
+        vim.cmd.LspRestart()
+    end,
 })
 
 

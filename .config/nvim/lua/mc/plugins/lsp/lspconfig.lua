@@ -190,12 +190,6 @@ lspconfig["clangd"].setup({
     }
 })
 
--- try to configure flake8???
--- lspconfig["flake8"].setup({
---     capabilities = capabilities,
---     on_attach = on_attach,
--- })
-
 -- configure the shellcheck server
 lspconfig["bashls"].setup({
     capabilities = capabilities,
@@ -240,6 +234,11 @@ lspconfig["lua_ls"].setup({
             },
         },
     },
+})
+
+lspconfig["taplo"].setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
 })
 
 vim.diagnostic.config({

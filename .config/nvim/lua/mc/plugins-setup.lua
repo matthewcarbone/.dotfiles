@@ -215,6 +215,16 @@ return packer.startup(function(use)
     -- Undo tree 
     use({"mbbill/undotree", tag = "rel_6.1"})
 
+    -- Displays LSP server status!
+    -- use({
+    --     "j-hui/fidget.nvim",
+    --     tag = "v1.3.0",
+    --     window = {
+    --         blend = 0, -- note: not winblend!
+    --         relative = "editor",
+    --     }
+    -- })
+
     if packer_bootstrap then
         require("packer").sync()
     end

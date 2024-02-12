@@ -59,9 +59,13 @@ vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 -- Adjust window width
 keymap.set("n", "<leader>we", ":NvimTreeResize ")
 
--- Autoformatting with lsp
+-- Autoformatting with lsp or black depending on which filetype we're in
 vim.keymap.set("n", "<leader>mf", function()
-    vim.lsp.buf.format()
+    if vim.bo.filetype == "python" then
+        vim.cmd("!black %")
+    else
+        vim.lsp.buf.format()
+    end
 end)
 
 -- Telescope projects

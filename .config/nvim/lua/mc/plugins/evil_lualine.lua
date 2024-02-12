@@ -150,16 +150,19 @@ ins_left {
 
 ins_left {
     function()
-        local msg = os.getenv('CONDA_PREFIX')
-        if msg then
-            local name = msg:match( "([^/]+)$" )
-            return name
-        else
-            return 'unknown env'
-        end
+        -- local msg = os.getenv('CONDA_PREFIX')
+        --
+        -- return msg
+        -- if msg then
+        --     local name = msg:match( "([^/]+)$" )
+        --     return name
+        -- else
+        --     return 'unknown env'
+        -- end
+        return '🐍'
     end,
     cond = conditions.is_python_file,
-    icon = '🐍',
+    -- icon = '🐍',
 }
 
 ins_left {

@@ -202,7 +202,7 @@ return packer.startup(function(use)
     use("artempyanykh/marksman")
 
     -- inline git
-    -- use({"tpope/vim-fugitive", tag = "v3.7"})
+    use({"tpope/vim-fugitive", tag = "v3.7"})
 
     -- DOGE
     -- For documentation

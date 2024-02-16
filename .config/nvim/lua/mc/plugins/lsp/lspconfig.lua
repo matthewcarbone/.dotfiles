@@ -213,6 +213,7 @@ lspconfig["cssls"].setup({
 lspconfig["tailwindcss"].setup({
     capabilities = capabilities,
     on_attach = on_attach,
+    filetypes = { "css", "html" },
 })
 
 -- configure emmet language server
@@ -248,9 +249,22 @@ lspconfig["taplo"].setup({
     on_attach = on_attach,
 })
 
+
+-- lspconfig["yaml-language-server"].setup({
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- })
+--
+-- lspconfig["yamlfix"].setup({
+--     capabilities = capabilities,
+--     on_attach = on_attach,
+-- })
+
 vim.diagnostic.config({
     virtual_text = false, -- Turn off inline diagnostics
 })
+
+
 
 -- Use this if you want it to automatically show all diagnostics on the
 -- current line in a floating window. Personally, I find this a bit

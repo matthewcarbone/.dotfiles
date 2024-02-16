@@ -63,6 +63,7 @@ keymap.set("n", "<leader>we", ":NvimTreeResize ")
 vim.keymap.set("n", "<leader>mf", function()
     if vim.bo.filetype == "python" then
         vim.cmd("!black %")
+        vim.cmd("!isort %")
     else
         vim.lsp.buf.format()
     end

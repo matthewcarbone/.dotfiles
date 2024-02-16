@@ -45,6 +45,9 @@ return packer.startup(function(use)
     -- essentials
     use("tpope/vim-surround")
     use("vim-scripts/ReplaceWithRegister")
+    -- use(
+    --    {"tpope/vim-markdown", commit = "f2b82b7884a3d8bde0c5de7793b27e07030eb2bc"}
+    -- )
 
     -- file explorer
     use("nvim-tree/nvim-tree.lua")
@@ -111,19 +114,37 @@ return packer.startup(function(use)
             null_ls.setup({
                 -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
                 sources = {
-                    -- formatting.prettier,
+                    formatting.prettier.with({
+                        filetypes = {
+                            "javascript",
+                            "typescript",
+                            "css",
+                            "scss",
+                            "html",
+                            "json",
+                            "yaml",
+                            "markdown",
+                            "markdownlint",
+                            "graphql",
+                            "md",
+                            "txt",
+                        },
+                        extra_filetypes = { "toml", },
+                    }),
                     -- formatting.stylelua,
                     -- diagnostics.eslint_d,
                     diagnostics.shellcheck.with({ filetypes = { "sh", "zsh" } }),
                     formatting.shfmt.with({ filetypes = { "sh", "zsh" } }),
-                    null_ls.builtins.formatting.black.with({
-                        extra_args = { "--line-length=80" }
-                    }),
-                    null_ls.builtins.formatting.isort,
+                    -- null_ls.builtins.formatting.black.with({
+                    --     extra_args = { "--line-length=80" }
+                    -- }),
+                    -- null_ls.builtins.formatting.isort,
                     -- null_ls.builtins.diagnostics.flake8,
                     null_ls.builtins.diagnostics.shellcheck,
                     null_ls.builtins.formatting.trim_newlines,
                     null_ls.builtins.formatting.trim_whitespace,
+                    null_ls.builtins.formatting.yamlfix,
+                    null_ls.builtins.formatting.yamlfmt,
                 },
 
                 -- you can reuse a shared lspconfig on_attach callback here

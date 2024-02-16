@@ -58,3 +58,4 @@ vim.g.signify_sign_overwrite = 0
 
 -- DOGE
 vim.g.doge_doc_standard_python = "numpy"
+

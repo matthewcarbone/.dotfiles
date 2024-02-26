@@ -13,10 +13,11 @@ opt.number = true
 opt.scrolloff = 8
 
 -- tabbing and indentation
-opt.tabstop = 4 -- use 4 spaces for tabs
-opt.shiftwidth = 4
-opt.expandtab = true
 opt.autoindent = true
+opt.tabstop = 4 -- A TAB character looks like 4 spaces
+opt.expandtab = true -- Pressing the TAB key will insert spaces instead of a TAB character
+opt.softtabstop = 4 -- Number of spaces inserted instead of a TAB character
+opt.shiftwidth = 4 -- Number of spaces inserted when indenting
 
 -- line wrapping
 opt.wrap = false

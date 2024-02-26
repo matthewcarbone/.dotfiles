@@ -43,8 +43,8 @@ keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available 
 
 -- telescope git commands (not on youtube nvim video)
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
 
 -- restart lsp server (not on youtube nvim video)
@@ -61,14 +61,14 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 keymap.set("n", "<leader>we", ":NvimTreeResize ")
 
 -- Autoformatting with lsp or black depending on which filetype we're in
-vim.keymap.set("n", "<leader>mf", function()
-  if vim.bo.filetype == "python" then
-    vim.cmd("!black %")
-    vim.cmd("!isort %")
-  else
-    vim.lsp.buf.format()
-  end
-end)
+-- vim.keymap.set("n", "<leader>mf", function()
+--   if vim.bo.filetype == "python" then
+--     vim.cmd("!black %")
+--     vim.cmd("!isort %")
+--   else
+--     vim.lsp.buf.format()
+--   end
+-- end)
 
 -- Telescope projects
 vim.keymap.set("n", "<leader>j", ":Telescope projects<CR>")

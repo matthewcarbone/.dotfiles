@@ -16,39 +16,38 @@ end
 return {
   "nvim-tree/nvim-tree.lua",
   lazy = false,
-  opts = {
-    view = {
-      width = width(),
-      relativenumber = true,
-    },
-    -- change folder arrow icons
-    renderer = {
-      indent_markers = {
-        enable = true,
+  config = function()
+    require("nvim-tree").setup({
+      view = {
+        width = width(),
+        relativenumber = true,
       },
-      icons = {
-        glyphs = {
-          folder = {
-            arrow_closed = "yolo", -- arrow when folder is closed
-            arrow_open = "swag", -- arrow when folder is open
+      -- change folder arrow icons
+      renderer = {
+        indent_markers = {
+          enable = true,
+        },
+        icons = {
+          glyphs = {
+            folder = {
+              arrow_closed = "", -- arrow when folder is closed
+              arrow_open = "", -- arrow when folder is open
+            },
           },
         },
       },
-    },
-    git = {
-      ignore = false,
-    },
-    filters = {
-      custom = { ".DS_Store" },
-    },
-    sync_root_with_cwd = true,
-    respect_buf_cwd = true,
-    update_focused_file = {
-      enable = true,
-      update_root = true,
-    },
-  },
-  config = function()
-    require("nvim-tree").setup({})
+      git = {
+        ignore = false,
+      },
+      filters = {
+        custom = { ".DS_Store" },
+      },
+      sync_root_with_cwd = true,
+      respect_buf_cwd = true,
+      update_focused_file = {
+        enable = true,
+        update_root = true,
+      },
+    })
   end,
 }

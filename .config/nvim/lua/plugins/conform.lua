@@ -6,7 +6,15 @@ return {
         formatters_by_ft = {
             lua = { "stylua" },
             fish = { "fish_indent" },
-            python = { "isort", "black" },
+            python = function(bufnr)
+                if
+                    require("conform").get_formatter_info("ruff_format", bufnr).available
+                then
+                    return { "isort", "ruff_format" }
+                else
+                    return { "isort", "black" }
+                end
+            end,
             sh = { "shfmt" },
         },
     },

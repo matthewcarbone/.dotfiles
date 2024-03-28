@@ -73,12 +73,14 @@ return {
             keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
             opts.desc = "Restart LSP"
-            keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+            keymap.set("n", "<leader>rs", ":lsprestart<cr>", opts) -- mapping to restart lsp if necessary
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
         local capabilities = cmp_nvim_lsp.default_capabilities()
 
+        -- Pyright stuff
+        -- Additiona info: https://microsoft.github.io/pyright/#/configuration?id=diagnostic-settings-defaults
         lspconfig["pyright"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -92,10 +94,32 @@ return {
                         typeCheckingMode = "off",
                         useLibraryCodeForTypes = false,
                         autoImportCompletions = true,
+                        diagnosticSeverityOverrides = {
+                            reportUnusedVariable = "warning",
+                            reportUnboundVariable = "error",
+                        },
                     },
                 },
             },
         })
+
+        -- lspconfig["pyright"].setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        --     settings = {
+        --         pyright = {
+        --             disableLanguageServices = false,
+        --             disableOrganizeImports = false,
+        --         },
+        --         python = {
+        --             analysis = {
+        --                 typeCheckingMode = "off",
+        --                 useLibraryCodeForTypes = false,
+        --                 autoImportCompletions = true,
+        --             },
+        --         },
+        --     },
+        -- })
 
         -- configure cmake server
         lspconfig["cmake"].setup({

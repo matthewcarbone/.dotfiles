@@ -12,7 +12,7 @@ return {
 
         local opts = { noremap = true, silent = true }
 
-        local on_attach = function(client, bufnr)
+        local on_attach = function(_, bufnr) -- client
             opts.buffer = bufnr
 
             -- set keybinds
@@ -73,7 +73,7 @@ return {
             keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
             opts.desc = "Restart LSP"
-            keymap.set("n", "<leader>rs", ":lsprestart<cr>", opts) -- mapping to restart lsp if necessary
+            keymap.set("n", "<leader>rs", ":LspRestart<cr>", opts) -- mapping to restart lsp if necessary
         end
 
         -- used to enable autocompletion (assign to every lsp server config)

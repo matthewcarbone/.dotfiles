@@ -58,8 +58,9 @@ opt.colorcolumn = "80"
 vim.g.virtcolumn_char = "▕" -- char to display the line
 vim.g.virtcolumn_priority = 10 -- priority of extmark
 
--- signify
-vim.g.signify_sign_overwrite = 0
-
--- DOGE
-vim.g.doge_doc_standard_python = "numpy"
+-- testing line wrapping
+opt.number = true
+opt.textwidth = 0
+opt.wrapmargin = 0
+opt.wrap = true
+opt.linebreak = true

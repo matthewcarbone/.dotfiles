@@ -143,6 +143,64 @@ return {
             on_attach = on_attach,
         })
 
+        -- configure julia server
+        lspconfig["julials"].setup({
+            cmd = {
+                "/opt/homebrew/bin/julia",
+                "--startup-file=no",
+                "--history-file=no",
+                "-e",
+                [[
+                using Pkg; 
+                Pkg.instantiate();
+                using LanguageServer; 
+                using StaticLint; 
+                import SymbolServer;
+                depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
+                project_path = get(ENV, "JULIA_PROJECT", "")
+                if isempty(project_path)
+                    project_path = dirname(something(Base.current_project(pwd()), Base.load_path_expand(LOAD_PATH[2])))
+                end
+                @info "Running language server" project_path depot_path
+                server = LanguageServer.LanguageServerInstance(stdin, stdout, project_path, depot_path)
+                server.runlinter = true
+                run(server)
+            ]],
+            },
+            capabilities = capabilities,
+            settings = {
+                julia = {
+                    lint = {
+                        run = true,
+                        missingrefs = true, -- example setting to enable linting for missing references
+                    },
+                },
+            },
+            on_attach = function(client, bufnr)
+                vim.diagnostic.config({
+                    virtual_text = true,
+                    signs = true,
+                    underline = true,
+                    update_in_insert = false,
+                    severity_sort = true,
+                })
+
+                local signs = {
+                    Error = " ",
+                    Warn = " ",
+                    Hint = " ",
+                    Info = " ",
+                }
+                for type, icon in pairs(signs) do
+                    local hl = "DiagnosticSign" .. type
+                    vim.fn.sign_define(
+                        hl,
+                        { text = icon, texthl = hl, numhl = hl }
+                    )
+                end
+            end,
+        })
+
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,

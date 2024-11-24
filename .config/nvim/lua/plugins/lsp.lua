@@ -155,6 +155,7 @@ return {
                 Pkg.instantiate();
                 using LanguageServer; 
                 using StaticLint; 
+                using JuliaFormatter;
                 import SymbolServer;
                 depot_path = get(ENV, "JULIA_DEPOT_PATH", "")
                 project_path = get(ENV, "JULIA_PROJECT", "")
@@ -199,6 +200,11 @@ return {
                     )
                 end
             end,
+        })
+
+        lspconfig["rust_analyzer"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
         })
 
         -- configure lua server (with special settings)

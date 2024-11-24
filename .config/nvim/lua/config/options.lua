@@ -64,3 +64,11 @@ opt.textwidth = 0
 opt.wrapmargin = 0
 opt.wrap = true
 opt.linebreak = true
+
+vim.g.lazy_plugins = {
+    { "kdheepak/JuliaFormatter.vim", { on = "JuliaFormatterEnable" } },
+    -- Add other plugins as needed
+}
+
+-- attempt to disable hiding things
+vim.g.vim_markdown_conceal_code_blocks = 0

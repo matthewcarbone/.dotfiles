@@ -102,7 +102,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions direnv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -211,7 +211,8 @@ alias vi='/opt/homebrew/bin/nvim'
 # alias mv='mv -i'
 
 alias df='df -h'
-alias ls='exa'
+alias ls='eza --icons'
+alias ll='eza -l -g --icons'
 alias grep='grep --color=auto'
 alias opens='open -a Sublime\ Text'
 
@@ -263,6 +264,9 @@ export LIBGL_ALWAYS_INDIRECT=1
 emacs
 '
 
+# Alias for inkscape
+# alias inkscape="/Applications/Inkscape.app/Contents/MacOS/inkscape"
+
 # Task spooler
 # for some reason the alias is now ts
 alias tsp='ts'
@@ -273,3 +277,28 @@ source ~/.api_keys
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+uvsh() {
+    local venv_name=${1:-'.venv'}
+    venv_name=${venv_name//\//} # remove trailing slashes (Linux)
+    venv_name=${venv_name//\\/} # remove trailing slashes (Windows)
+
+    local venv_bin=
+    if [[ -d ${WINDIR} ]]; then
+        venv_bin='Scripts/activate'
+    else
+        venv_bin='bin/activate'
+    fi
+
+    local activator="${venv_name}/${venv_bin}"
+    echo "[INFO] Activate Python venv: ${venv_name} (via ${activator})"
+
+    if [[ ! -f ${activator} ]]; then
+        echo "[ERROR] Python venv not found: ${venv_name}"
+        return
+    fi
+
+    # shellcheck disable=SC1090
+    . "${activator}"
+}

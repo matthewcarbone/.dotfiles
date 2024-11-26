@@ -1,7 +1,7 @@
 return {
     "stevearc/conform.nvim",
     lazy = false,
-    tag = "v5.3.0",
+    tag = "v8.2.0",
     opts = {
         formatters_by_ft = {
             lua = { "stylua" },
@@ -16,6 +16,7 @@ return {
                 end
             end,
             sh = { "shfmt" },
+            rust = { "rustfmt", lsp_format = "fallback" },
         },
     },
 }

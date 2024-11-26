@@ -32,7 +32,7 @@ keymap.set("n", "<leader>tp", ":tabp<CR>")
 keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>")
 
 -- nvim tree
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
+-- keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>")
 
 -- telescope
 keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
@@ -55,7 +55,7 @@ keymap.set("n", "dD", "cc<Esc>")
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
 -- Adjust window width
-keymap.set("n", "<leader>we", ":NvimTreeResize ")
+-- keymap.set("n", "<leader>we", ":NvimTreeResize ")
 
 -- Autoformatting with lsp or black depending on which filetype we're in
 -- vim.keymap.set("n", "<leader>mf", function()

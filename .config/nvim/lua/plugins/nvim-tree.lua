@@ -16,6 +16,8 @@ end
 return {
     "nvim-tree/nvim-tree.lua",
     lazy = false,
+    after = "nvim-web-devicons",
+    requires = "nvim-tree/nvim-web-devicons",
     config = function()
         require("nvim-tree").setup({
             view = {

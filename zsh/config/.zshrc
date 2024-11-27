@@ -303,4 +303,4 @@ uvsh() {
     . "${activator}"
 }
 
-eval "$(oh-my-posh init zsh --config ~/oh-my-posh/powerlevel10k_lean.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/oh-my-posh/1_shell.omp.json)"

@@ -179,7 +179,11 @@ uvsh() {
     . "${activator}"
 }
 
-# eval "$(oh-my-posh init zsh --config ~/oh-my-posh/1_shell.omp.json)"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+fi
+
 
 # To customize prompt, run `p10k configure` or edit ~/zsh/config/.p10k.zsh.
 [[ ! -f ~/zsh/config/.p10k.zsh ]] || source ~/zsh/config/.p10k.zsh

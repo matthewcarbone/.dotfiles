@@ -1,5 +1,0 @@
-return {
-    "akinsho/git-conflict.nvim",
-    config = true,
-    lazy = false,
-}

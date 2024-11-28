@@ -187,3 +187,5 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/zsh/config/.p10k.zsh.
 [[ ! -f ~/zsh/config/.p10k.zsh ]] || source ~/zsh/config/.p10k.zsh
+
+. "$HOME/.local/bin/env"

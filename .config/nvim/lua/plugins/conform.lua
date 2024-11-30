@@ -17,6 +17,7 @@ return {
             end,
             sh = { "shfmt" },
             rust = { "rustfmt", lsp_format = "fallback" },
+            typescript = { "deno_fmt" },
         },
     },
 }

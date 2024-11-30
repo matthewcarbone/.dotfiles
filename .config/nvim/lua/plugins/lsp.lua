@@ -143,6 +143,11 @@ return {
             on_attach = on_attach,
         })
 
+        -- lspconfig["denols"].setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        -- })
+
         -- configure julia server
         lspconfig["julials"].setup({
             cmd = {
@@ -203,6 +208,11 @@ return {
         })
 
         lspconfig["rust_analyzer"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        lspconfig["tsserver"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
         })

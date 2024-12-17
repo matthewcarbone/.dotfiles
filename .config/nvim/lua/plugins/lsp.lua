@@ -1,12 +1,9 @@
 return {
     "neovim/nvim-lspconfig",
-    dependencies = { "hrsh7th/cmp-nvim-lsp" },
+    dependencies = { "saghen/blink.cmp" },
     config = function()
         -- import lspconfig plugin
         local lspconfig = require("lspconfig")
-
-        -- import cmp-nvim-lsp plugin
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         local keymap = vim.keymap -- for conciseness
 
@@ -77,7 +74,7 @@ return {
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
 
         -- Pyright stuff
         -- Additiona info: https://microsoft.github.io/pyright/#/configuration?id=diagnostic-settings-defaults

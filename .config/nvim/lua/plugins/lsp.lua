@@ -81,23 +81,6 @@ return {
         lspconfig["pyright"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            settings = {
-                pyright = {
-                    disableLanguageServices = false,
-                    disableOrganizeImports = false,
-                },
-                python = {
-                    analysis = {
-                        typeCheckingMode = "off",
-                        useLibraryCodeForTypes = false,
-                        autoImportCompletions = true,
-                        diagnosticSeverityOverrides = {
-                            reportUnusedVariable = "warning",
-                            reportUnboundVariable = "error",
-                        },
-                    },
-                },
-            },
         })
 
         -- lspconfig["pyright"].setup({

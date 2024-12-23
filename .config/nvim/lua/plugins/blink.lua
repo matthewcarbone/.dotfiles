@@ -19,7 +19,27 @@ return {
         -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
         -- see the "default configuration" section below for full documentation on how to define
         -- your own keymap.
-        keymap = { preset = "default" },
+        keymap = {
+            -- preset = "default",
+            ["<C-d>"] = {
+                "show",
+                "show_documentation",
+                "hide_documentation",
+            },
+            ["<C-k>"] = { "select_prev", "fallback" },
+            ["<C-j>"] = { "select_next", "fallback" },
+        },
+        --   ['<C-e>'] = { 'hide' },
+        --   ['<C-y>'] = { 'select_and_accept' },
+        --
+        --   ['<C-p>'] = { 'select_prev', 'fallback' },
+        --   ['<C-n>'] = { 'select_next', 'fallback' },
+        --
+        --   ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+        --   ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+        --
+        --   ['<Tab>'] = { 'snippet_forward', 'fallback' },
+        --   ['<S-Tab>'] = { 'snippet_backward', 'fallback' },},
 
         appearance = {
             -- Sets the fallback highlight groups to nvim-cmp's highlight groups

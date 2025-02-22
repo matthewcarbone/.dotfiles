@@ -6,17 +6,6 @@
 source ~/.api_keys
 
 # ----------------------------------------------------------------------------
-# POWERLEVEL10K CONFIG
-# ----------------------------------------------------------------------------
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# ----------------------------------------------------------------------------
 # SETUP FOR HOMEBREW
 # ----------------------------------------------------------------------------
 # If you come from bash you might have to change your $PATH.
@@ -94,13 +83,12 @@ alias grep='grep --color=auto'
 alias tsp='ts'
 
 # ----------------------------------------------------------------------------
-# FINAL SOURCE P10K
-# ----------------------------------------------------------------------------
-# To customize prompt, run `p10k configure` or edit ~/zsh/config/.p10k.zsh.
-[[ ! -f ~/zsh/config/.p10k.zsh ]] || source ~/zsh/config/.p10k.zsh
-
-# ----------------------------------------------------------------------------
 # FINAL SOURCE ATUIN (https://atuin.sh/)
 # ----------------------------------------------------------------------------
 . "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh)"
+
+# ----------------------------------------------------------------------------
+# FINAL SOURCE STARSHIP (https://starship.rs/)
+# ----------------------------------------------------------------------------
+eval "$(starship init zsh)"

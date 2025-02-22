@@ -98,3 +98,9 @@ alias tsp='ts'
 # ----------------------------------------------------------------------------
 # To customize prompt, run `p10k configure` or edit ~/zsh/config/.p10k.zsh.
 [[ ! -f ~/zsh/config/.p10k.zsh ]] || source ~/zsh/config/.p10k.zsh
+
+# ----------------------------------------------------------------------------
+# FINAL SOURCE ATUIN (https://atuin.sh/)
+# ----------------------------------------------------------------------------
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"

@@ -1,16 +1,16 @@
 {
   "bash-language-server": "5.4.2",
   "clangd": "19.1.2",
+  "cmake-language-server": "0.1.10",
   "deno": "v2.1.4",
   "emmet-ls": "0.4.2",
-  "html-lsp": "4.10.0",
   "julia-lsp": "v1.127.2",
   "lua-language-server": "3.13.4",
   "pyright": "1.1.390",
   "shfmt": "v3.10.0",
   "stylua": "v0.20.0",
+  "superhtml": "v0.5.3",
   "tailwindcss-language-server": "0.0.27",
   "taplo": "0.9.3",
-  "typescript-language-server": "4.3.3",
-
+  "typescript-language-server": "4.3.3"
 }

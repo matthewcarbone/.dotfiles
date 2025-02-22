@@ -123,6 +123,11 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig["superhtml"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
         -- lspconfig["denols"].setup({
         --     capabilities = capabilities,
         --     on_attach = on_attach,
@@ -192,9 +197,15 @@ return {
             on_attach = on_attach,
         })
 
-        lspconfig["tsserver"].setup({
+        lspconfig["ts_ls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+            },
         })
 
         -- configure lua server (with special settings)

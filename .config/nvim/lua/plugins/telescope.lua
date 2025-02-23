@@ -21,6 +21,10 @@ return {
                     find_command = { "rg", "--files", "--iglob", "!.git" },
                     hidden = true,
                 },
+                live_grep = {
+                    hidden = true,
+                    additional_args = { "--hidden" },
+                },
             },
         })
     end,

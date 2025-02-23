@@ -19,3 +19,9 @@ brew install --cask alacritty
 
 - [ObsidianMC](/ObsidianMC/README.md) My personal Obsidian vault css files and other parameters.
 - [scripts](/scripts/README.md) Misc. scripts that I use for a variety of reasons.
+
+
+# Some notes
+- Fonts are a pain in the neck. You want "JetbrainsMono Nerd Font" or something along those lines: https://www.nerdfonts.com/font-downloads.
+- [Tokyo Night Color Palette](https://lospec.com/palette-list/tokyo-night)
+

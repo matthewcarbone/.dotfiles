@@ -231,6 +231,9 @@ command = 'cat .python-version'
 detect_files = ['uv.lock']
 symbol = ' uv '
 
+[cmake]
+format = " [CMake](italic) [${version}](bold bright-yellow)"
+
 [ruby]
 format = " [rb](italic) [${symbol}${version}]($style)"
 symbol = "◆ "

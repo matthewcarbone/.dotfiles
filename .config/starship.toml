@@ -118,15 +118,16 @@ disabled = false
 show_always = false
 
 [directory]
-home_symbol = "⌂"
-truncation_length = 2
+home_symbol = "~"
+truncation_length = 3
 truncation_symbol = "□ "
 read_only = " ◈"
 use_os_path_sep = true
 style = "italic blue"
 format = '[$path]($style)[$read_only]($read_only_style)'
 repo_root_style = 'bold blue'
-repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) [△](bold bright-blue)'
+repo_root_format = '[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)' 
+# [△](bold bright-blue)'
 
 [cmd_duration]
 format = "[◄ $duration ](italic white)"
@@ -174,15 +175,16 @@ symbol = "[△](bold italic bright-blue)"
 style = "italic bright-blue"
 truncation_symbol = "⋯"
 truncation_length = 11
-ignore_branches = ["main", "master"]
-only_attached = true
+# ignore_branches = ["main", "master"]
+# only_attached = true
+disabled = true
 
 [git_metrics]
 format = '([▴$added]($added_style))([▿$deleted]($deleted_style))'
 added_style = 'italic dimmed green'
 deleted_style = 'italic dimmed red'
 ignore_submodules = true
-disabled = false
+disabled = true
 
 [git_status]
 style = "bold bright-blue"
@@ -197,6 +199,7 @@ modified = "[●◦](italic yellow)"
 staged = "[▪┤[$count](bold white)│](italic bright-cyan)"
 renamed = "[◎◦](italic bright-blue)"
 deleted = "[✕](italic red)"
+disabled = true
 
 [deno]
 format = " [deno](italic) [∫ $version](green bold)"

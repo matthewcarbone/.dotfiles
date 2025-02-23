@@ -1,6 +1,5 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.8",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -9,9 +8,18 @@ return {
             defaults = {
                 mappings = {
                     i = {
-                        ["<C-k>"] = actions.move_selection_previous, -- move to prev result
-                        ["<C-j>"] = actions.move_selection_next, -- move to next result
+                        ["<C-j>"] = actions.move_selection_next,
+                        ["<C-k>"] = actions.move_selection_previous,
+                        ["<CR>"] = actions.select_default,
+                        ["<C-n>"] = false,
+                        ["<C-p>"] = false,
                     },
+                },
+            },
+            pickers = {
+                find_files = {
+                    find_command = { "rg", "--files", "--iglob", "!.git" },
+                    hidden = true,
                 },
             },
         })

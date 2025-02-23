@@ -225,6 +225,12 @@ version_format = "${raw}"
 style = "bold bright-yellow"
 disabled = true
 
+[custom.uv]
+format = " [uv](italic #6340ac) [py](italic) [${output}](bold bright-yellow)"
+command = 'cat .python-version'
+detect_files = ['uv.lock']
+symbol = ' uv '
+
 [ruby]
 format = " [rb](italic) [${symbol}${version}]($style)"
 symbol = "◆ "
